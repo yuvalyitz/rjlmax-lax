@@ -8,10 +8,101 @@ authors:
     github: yuvalyitz
   - name: Claude
 bibEntries:
-  - "@misc{elffers2017twolengths,\n  author = {Elffers, Jan and de Weerdt, Mathijs},\n  title  = {Scheduling with two non-unit job lengths is {NP}-complete},\n  year   = {2017},\n  eprint = {1412.3095},\n  archivePrefix = {arXiv},\n  primaryClass = {cs.CC}\n}\n"
-  - "@inproceedings{cook1971complexity,\n  author    = {Cook, Stephen A.},\n  title     = {The complexity of theorem-proving procedures},\n  booktitle = {Proceedings of the Third Annual ACM Symposium on Theory of Computing},\n  pages     = {151--158},\n  year      = {1971}\n}\n"
-  - "@misc{lax-242665,\n  author       = {Bonnet, {\\'E}douard and Dreier, Jan and Kuske, Clemens},\n  title        = {An Introduction to {Lax}},\n  year         = {2026},\n  howpublished = {Lax Archive, lax-242665},\n  url          = {https://laxarchive.org/lax-242665/}\n}\n"
-  - "@misc{lax-434930,\n  author       = {Bonnet, {\\'E}douard and {Codex 5.6 and 6}},\n  title        = {Classical Complexity Classes},\n  year         = {2026},\n  howpublished = {Lax Archive, lax-434930},\n  url          = {https://laxarchive.org/lax-434930/}\n}\n"
-  - "@misc{lax-429075,\n  author       = {Bonnet, {\\'E}douard and {Codex 5.6 and 6}},\n  title        = {The {Cook}--{Levin} Theorem},\n  year         = {2026},\n  howpublished = {Lax Archive, lax-429075},\n  url          = {https://laxarchive.org/lax-429075/}\n}\n"
-  - "@misc{lax-808846,\n  author       = {Dreier, Jan and {Claude Fable 5 (Anthropic)}},\n  title        = {The Word {RAM}},\n  year         = {2026},\n  howpublished = {Lax Archive, lax-808846},\n  url          = {https://laxarchive.org/lax-808846/}\n}\n"
-  - "@misc{lax-759944,\n  author       = {Toru{\\'n}czyk, Szymon and {GPT 5.6}},\n  title        = {Computability and polynomial-time equivalence of {Turing} machines and word {RAMs}},\n  year         = {2026},\n  howpublished = {Lax Archive, lax-759944},\n  url          = {https://laxarchive.org/lax-759944/}\n}\n"
+  - "@misc{elffers2017twolengths,
+
+    \  author = {Elffers, Jan and de Weerdt, Mathijs},
+
+    \  title  = {Scheduling with two non-unit job lengths is {NP}-complete},
+
+    \  year   = {2017},
+
+    \  eprint = {1412.3095},
+
+    \  archivePrefix = {arXiv},
+
+    \  primaryClass = {cs.CC}
+
+    }\n"
+  - "@inproceedings{cook1971complexity,
+
+    \  author    = {Cook, Stephen A.},
+
+    \  title     = {The complexity of theorem-proving procedures},
+
+    \  booktitle = {Proceedings of the Third Annual ACM Symposium on Theory of
+    Computing},
+
+    \  pages     = {151--158},
+
+    \  year      = {1971}
+
+    }\n"
+  - "@misc{lax-242665,
+
+    \  author       = {Bonnet, {\\'E}douard and Dreier, Jan and Kuske, Clemens},
+
+    \  title        = {An Introduction to {Lax}},
+
+    \  year         = {2026},
+
+    \  howpublished = {Lax Archive, lax-242665},
+
+    \  url          = {https://laxarchive.org/lax-242665/}
+
+    }\n"
+  - "@misc{lax-434930,
+
+    \  author       = {Bonnet, {\\'E}douard and {Codex 5.6 and 6}},
+
+    \  title        = {Classical Complexity Classes},
+
+    \  year         = {2026},
+
+    \  howpublished = {Lax Archive, lax-434930},
+
+    \  url          = {https://laxarchive.org/lax-434930/}
+
+    }\n"
+  - "@misc{lax-429075,
+
+    \  author       = {Bonnet, {\\'E}douard and {Codex 5.6 and 6}},
+
+    \  title        = {The {Cook}--{Levin} Theorem},
+
+    \  year         = {2026},
+
+    \  howpublished = {Lax Archive, lax-429075},
+
+    \  url          = {https://laxarchive.org/lax-429075/}
+
+    }\n"
+  - "@misc{lax-808846,
+
+    \  author       = {Dreier, Jan and {Claude Fable 5 (Anthropic)}},
+
+    \  title        = {The Word {RAM}},
+
+    \  year         = {2026},
+
+    \  howpublished = {Lax Archive, lax-808846},
+
+    \  url          = {https://laxarchive.org/lax-808846/}
+
+    }\n"
+  - "@misc{lax-759944,
+
+    \  author       = {Toru{\\'n}czyk, Szymon and {GPT 5.6}},
+
+    \  title        = {Computability and polynomial-time equivalence of {Turing}
+    machines and word {RAMs}},
+
+    \  year         = {2026},
+
+    \  howpublished = {Lax Archive, lax-759944},
+
+    \  url          = {https://laxarchive.org/lax-759944/}
+
+    }\n"
+issue:
+  repositoryId: 1320232165
+  number: 136
