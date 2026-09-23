@@ -27,10 +27,12 @@ ordered instances of the auxiliary problem that have a solution at those lengths
 
 # Formalization notes
 
-Numbers are written in binary. Under a unary encoding the input would be exponentially
-longer, a polynomial-time reduction correspondingly easier to achieve, and the hardness
-claim weaker. That the reduction produces only polynomially bounded numbers, which is
-what the source's claim of *strong* NP-completeness rests on, is recorded separately.
+Numbers are written in binary, the usual convention, under which NP-hardness is the
+usual claim. Hardness under a unary encoding of the scheduling instance would be the
+stronger claim, strong NP-hardness: the reduction would then have to produce numbers
+bounded by a polynomial in its input, since a unary word must stay polynomially long. That
+this reduction does produce such numbers, which is what the source's claim of strong
+NP-completeness rests on, is recorded separately.
 
 The job lengths $p$ and $q$ are parameters of the language and not part of the input:
 the theorem is about every fixed pair of lengths. A word that encodes no instance, or an
