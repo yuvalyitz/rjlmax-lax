@@ -68,7 +68,7 @@ In `proofs/`, the readable entry point is `Hardness.lean`;
     manifest.yaml     id, title, authors, pinned Lean + mathlib, bibliography
     abstract.md       the prose account, rendered on the archive website
     concepts/         statements only, as axioms — 9 modules
-    proofs/           the proofs, each tagged with the statement it discharges — 103 modules
+    proofs/           the proofs, each tagged with the statement it discharges — 105 modules
 
 A concept module states results as `axiom`s. A proof is a `theorem` whose docstring carries
 `conclusion: <that axiom's full name>`; the build checks the pairing.
