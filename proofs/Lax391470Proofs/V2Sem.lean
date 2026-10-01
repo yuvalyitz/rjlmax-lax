@@ -118,7 +118,7 @@ lemma dOf_eq : (dOf (tkOf A ++ rest) j : ℤ) = (A.toInstance p q).d j := by
 
 end
 
-/-- **The checks mean what they should**: the token values of an instance, followed by
+/-- **The verifier checks auxiliary-instance feasibility**: the token values of an instance, followed by
 start times, pass exactly if the instance is ordered and the start times solve it. -/
 theorem sem_iff (A : AuxiliaryProblem.Instance) (rest : List ℕ) :
     Sem p q (tkOf A ++ rest) ↔

@@ -25,7 +25,8 @@ lengths of which the shorter is $1$.
 
 Membership in NP holds for every pair of lengths and is stated without hypotheses. A
 certificate is a schedule with integer start times; feasibility confines every start
-time between a release time and a deadline of the instance, so the certificate has size polynomial in the encoding length of the instance.
+time between a release time and a deadline of the instance, so the certificate has size
+polynomial in the encoding length of the instance.
 -/
 
 namespace Lax391470.Theorem1

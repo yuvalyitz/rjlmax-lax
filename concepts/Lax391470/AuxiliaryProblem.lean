@@ -2,7 +2,7 @@ import Lax391470.Scheduling
 
 /-!
 ---
-title: The Auxiliary Problem AUX(p, Q)
+title: The Auxiliary Problem AUX(p, q)
 type: definition
 ---
 The intermediate problem through which the hardness proof passes. Fix two job lengths

@@ -140,7 +140,7 @@ Scheduling on the lengths $\{p,q\}$ belongs to \NP, for every $p,q$.
 
 A certificate is a schedule with integer start times; feasibility confines
 every start time between a release time and a deadline of the instance, so
-the certificate is no longer than the instance itself, and checking it is
+the certificate has size polynomial in the instance encoding, and checking it is
 immediate. Hardness is the substance of the theorem, and the rest of this
 paper is its proof.
 
@@ -471,6 +471,7 @@ open question and Mnich and van Bevern's Open Problem 3
 (Observation~\ref{obs:paranphard}). The dividing line between tractable and
 \NP-complete sits exactly at excluding the unit length.
 
+\clearpage
 \begin{thebibliography}{9}
 \bibitem{EdW17}
 J.~Elffers and M.~de Weerdt.

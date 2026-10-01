@@ -3,7 +3,7 @@ import Lax429075.CNF
 
 /-!
 ---
-title: The Instance of AUX(p, Q) Built from a Formula
+title: The Instance of AUX(p, q) Built from a Formula
 type: definition
 ---
 The instance of $\mathrm{AUX}(p, q)$ built from a formula in conjunctive normal form

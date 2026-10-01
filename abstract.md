@@ -1,4 +1,4 @@
-This work formalizes the work of Jan Elffers and Mathijs de Weerdt in
+This submission formalizes the theorem of Jan Elffers and Mathijs de Weerdt in
 [\[1\]](#ref-elffers2017twolengths). Non-preemptive scheduling of jobs with release times and
 deadlines on a single machine, $1 \mid r_j \mid L_{\max}$, is polynomial-time solvable
 when all jobs have the same length, and when the jobs have two lengths of which the
