@@ -3,7 +3,7 @@ import Lax391470Proofs.TypedAux
 namespace Lax391470Proofs
 
 /-!
-# The four blocks, and Proposition 1
+# The Four Blocks, and Proposition 1
 
 Definition 6 of Elffers–de Weerdt, and the analysis of what a block can do.
 
@@ -13,7 +13,7 @@ sections, each a literal block followed by `m` clause blocks and a separator. Th
 defines the four block types and proves the local facts the global argument needs; nothing
 here mentions the reduction, and every statement is a fact about three (or two) integers.
 
-## The early deadline of `V⁺`
+## The Early Deadline of `V⁺`
 
 Definition 6 gives the `V⁺` block a long pending job with deadlines
 `(d'_p, d_p) = (p+q+1, p+2q)`, and `litEarly` uses exactly that. The value is forced: the
@@ -25,7 +25,7 @@ the pending job completes at `p+2q`, which must exceed `p+q+1` — that needs `q
 is exactly the hypothesis under which the paper's theorem is stated, and the reason the
 `{1, p}` case is not covered by it.
 
-## Proposition 1, as used
+## Proposition 1, as Used
 
 The paper states it as "two schedules are possible, one without idle time and completion
 time `p+2q`, one with one unit of idle time and completion time `p+2q+1`; only in the
@@ -139,7 +139,7 @@ structure LitFits (p q : ℕ) (s : Bool) (o : ℤ) (t : LitJob → ℤ) : Prop w
 def LitPendEarly (p q : ℕ) (s : Bool) (o : ℤ) (t : LitJob → ℤ) : Prop :=
   t .pend + LitJob.len p q s .pend ≤ o + litEarly p q s
 
-/-! ### Proposition 1, the direction the hardness proof uses -/
+/-! ### Proposition 1, the Direction the Hardness Proof Uses -/
 
 /-- **Proposition 1 (`V⁺`).** If the long pending job completes early, the block is rigid:
 the tight ordinary job starts at `o+1`, the pending job at `o+q+1`, and the remaining

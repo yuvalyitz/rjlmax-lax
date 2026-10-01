@@ -4,7 +4,7 @@ import Lax429075.Reductions
 
 /-!
 ---
-title: The auxiliary problem reduces to scheduling on two job lengths
+title: The Auxiliary Problem Reduces to Scheduling on Two Job Lengths
 type: theorem
 ---
 For any two integer job lengths $p > q \ge 1$, the problem $\mathrm{AUX}(p, q)$ is
@@ -17,7 +17,7 @@ schedule of the stacked instance is rearranged, pair by pair in order of urgency
 every bin holds two jobs of its own pair, and the jobs left after time $0$ are then read
 as a solution of the auxiliary instance.
 
-# Formalization notes
+# Formalization Notes
 
 A reduction is a function on all words. A word that does not encode an ordered instance
 of the auxiliary problem is sent to the encoding of a fixed instance without a feasible

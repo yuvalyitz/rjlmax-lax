@@ -5,7 +5,7 @@ import Lax391470Proofs.TypedProblems
 namespace Lax391470Proofs
 
 /-!
-# Lemma 1: `AUX(p, q)` reduces to `1|rⱼ|Lmax` on two job lengths
+# Lemma 1: `AUX(p, q)` Reduces to `1|rⱼ|Lmax` on Two Job Lengths
 
 Definitions 3 and 4 of Elffers–de Weerdt, and the reduction they define.
 

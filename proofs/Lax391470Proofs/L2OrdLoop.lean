@@ -68,7 +68,7 @@ theorem calc_spec :
     · have := Nat.mul_le_mul_right (p + q) (show σ.vars "o" - 6 * nn - m ≤ 2 * m by omega)
       rw [Nat.mul_assoc] at this; exact this
 
-/-! ### The values are small -/
+/-! ### The Values Are Small -/
 
 lemma rVal_le (o : ℕ) : rVal q nn S o ≤ S * (2 * nn) + S + q + 1 := by
   unfold rVal
@@ -106,7 +106,7 @@ lemma set_step (l : List ℕ) (o v : ℕ) (f : ℕ → ℕ) (hl : o < l.length)
   · subst he; simp [hl, hv]
   · rw [if_neg he, ← h o' (by omega), List.getD_eq_getElem?_getD]
 
-/-! ### The loop -/
+/-! ### The Loop -/
 
 def ordBody : Com :=
   .seq (calcO p q)

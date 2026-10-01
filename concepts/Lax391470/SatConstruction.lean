@@ -3,7 +3,7 @@ import Lax429075.CNF
 
 /-!
 ---
-title: The instance of AUX(p, q) built from a formula
+title: The Instance of AUX(p, Q) Built from a Formula
 type: definition
 ---
 The instance of $\mathrm{AUX}(p, q)$ built from a formula in conjunctive normal form
@@ -45,7 +45,7 @@ The chain of clause blocks of a clause through all sections can be scheduled onl
 clause block is active in some section that is not delayed, that is, if the clause
 contains a true literal.
 
-# Formalization notes
+# Formalization Notes
 
 A formula is a list of clauses over variables named by natural numbers, as elsewhere in
 the archive. Its variables are taken to be $x_0, \dots, x_{n-1}$ with $n$ one more than

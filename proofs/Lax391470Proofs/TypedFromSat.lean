@@ -9,7 +9,7 @@ import Lax391470Proofs.TypedProblems
 namespace Lax391470Proofs
 
 /-!
-# Lemma 2: SAT reduces to `AUX(p, q)`
+# Lemma 2: SAT Reduces to `AUX(p, q)`
 
 Definition 7 of Elffers–de Weerdt. Given a CNF formula with `n` variables and `m` clauses,
 the instance of `AUX(p, q)` is `2n` **sections**, one per literal, laid out left to right
@@ -32,7 +32,7 @@ The file is organised as: the layout and its geometry (§1–§3), the pairing a
 2's four chain conditions (§4–§7), the instance itself (§8), Lemma 3 (§9–§10) and Lemma 4
 with Propositions 2 and 3 beneath it (§11).
 
-## A formula with no variables
+## A Formula with No Variables
 
 Definition 7 tacitly assumes `n ≥ 1`. With `n = 0` there are no literals, hence no
 sections and no jobs, so the constructed instance is trivially a yes-instance — while the
@@ -312,7 +312,7 @@ lemma longOffset_inr (k : Fin (2 * φ.n - 1)) (j : Fin φ.m) :
     push_cast
     ring
 
-/-! ### The long job's block advances by at least `p + q` at every step -/
+/-! ### The Long Job's Block Advances by at Least `p + q` at Every Step -/
 
 lemma posOffset_nonneg (pos : ℕ) : 0 ≤ posOffset p q φ pos := by
   by_cases h0 : pos = 0
@@ -460,7 +460,7 @@ lemma shortOffset_inr (k : Fin (2 * φ.n - 1)) (j : Fin φ.m) :
   push_cast
   ring
 
-/-! ### The four deadlines, bracketed by the block offset -/
+/-! ### The Four Deadlines, Bracketed by the Block Offset -/
 
 lemma dpOf_le (hq : 0 < q) (P : Pair φ) :
     dpOf p q φ P ≤ longOffset p q φ P + ((p : ℤ) + 2 * q) := by

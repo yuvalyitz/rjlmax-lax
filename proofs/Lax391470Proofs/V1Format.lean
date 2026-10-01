@@ -82,7 +82,7 @@ theorem conforms_toks2 (I : Scheduling.Instance) (t : ℕ → ℤ) : Conforms E2
       exact rest_kind I t j (by omega)
   · rw [E2_cons, hl]; unfold kind2; rw [if_neg (by omega), if_neg (by omega)]
 
-/-! ### Tokens are only ever appended -/
+/-! ### Tokens Are Only Ever Appended -/
 
 lemma step_toks (E : Format) (s : St) (b : Bool) : ∃ l, (step E s b).toks = s.toks ++ l := by
   unfold step dead
@@ -99,7 +99,7 @@ lemma run_toks_prefix (E : Format) (s : St) (w : Word) : ∃ l, (run E s w).toks
     obtain ⟨l2, h2⟩ := ih (step E s b)
     exact ⟨l1 ++ l2, by rw [run_cons, h2, h1, List.append_assoc]⟩
 
-/-! ### A scan that stops at the end of the instance -/
+/-! ### A Scan That Stops at the End of the Instance -/
 
 /-- **The boundary.** If the scan of a word stops between two tokens, having read exactly
 the tokens of an instance, the word is the code of these tokens and they conform to the

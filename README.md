@@ -1,4 +1,4 @@
-# Scheduling with two non-unit job lengths is NP-complete
+# Scheduling with Two Non-Unit Job Lengths Is NP-Complete
 
 A [Lax archive](https://github.com/lax-archive/lax) submission (`lax-391470`) formalizing the theorem of
 Elffers and de Weerdt ([arXiv:1412.3095](https://arxiv.org/abs/1412.3095)): for every fixed
@@ -17,15 +17,14 @@ Lean `v4.33.0` via [elan](https://github.com/leanprover/elan), and the
 [`lax` CLI](https://github.com/lax-archive/lax). The mathlib revision is pinned in `manifest.yaml`; Lake
 fetches it on first build.
 
-## Verifying it
+## Verification
 
-The one command that checks everything:
+Run the archive validation:
 
     lax build .
 
-Its last stage, *Inspecting the statements*, is the one that matters: it pairs every
-statement with its proof and reports `9 concepts · 19 proofs`. A green build means no
-statement is left standing on an assumption.
+The final stage, *Inspecting the statements*, pairs each statement with its proof and
+reports `9 concepts · 19 proofs`. The external assumptions are listed under Dependencies.
 
 To check a single module while editing, from `proofs/`:
 
@@ -45,12 +44,10 @@ and run `lake env lean /tmp/ax.lean` from `proofs/`. Expect `propext`, `Classica
 > Anything placed inside `proofs/Lax391470Proofs/` must also be imported by
 > `Lax391470Proofs.lean`, or the build is rejected. Keep scratch work elsewhere.
 
-## Reading it
+## Reading Guide
 
-Read `concepts/` and let the build vouch for `proofs/`. That is the division of labour the
-format exists for: about 800 lines of statements against about 20,000 lines of proof. Lean's kernel
-checks the proofs for free, but only a human can judge whether the statements mean what
-they claim.
+The `concepts/` directory contains the definitions and theorem statements; `proofs/`
+contains their Lean proofs. Start with the definitions, encodings, and main theorems.
 
 Suggested order:
 
@@ -59,11 +56,11 @@ Suggested order:
 3. `concepts/Lax391470/BinaryEncoding.lean` — how an instance becomes a word, and the
    languages `TwoLengths p q` and `AUX p q`. This is where a scheduling problem becomes a
    formal language, so it deserves the closest reading.
-4. `concepts/Lax391470/Theorem1.lean` — the three-line payoff.
+4. `concepts/Lax391470/Theorem1.lean` — the main NP-completeness theorem.
 5. The machinery: `AuxiliaryProblem`, `SatConstruction`, `StackedConstruction`, `Lemma2`,
    `Lemma1`.
 
-In `proofs/`, the readable entry point is `Hardness.lean` (70 lines, wiring only);
+In `proofs/`, the readable entry point is `Hardness.lean`;
 `V1Final.lean` and `V2Final.lean` carry the two NP-membership arguments.
 
 ## Layout
@@ -86,7 +83,7 @@ bibliography of `manifest.yaml`:
   and its NP-hardness.
 - `lax-808846`, *The Word RAM* (Jan Dreier): the machine model, the IMP+ language and its
   verified compiler.
-- `lax-759944`, *Computability and polynomial-time equivalence of Turing machines and word
+- `lax-759944`, *Computability and Polynomial-Time Equivalence of Turing Machines and Word
   RAMs* (Szymon Toruńczyk).
 
 Results of other submissions are cited through their statements: Cook–Levin

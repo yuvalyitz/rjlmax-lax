@@ -70,7 +70,7 @@ theorem bumpStep_spec (x : String) :
   · exact ⟨by simp [Env.setVar], by simp [Env.setVar], fun y hy => by simp [Env.setVar, hy],
       by simp [Env.setVar]⟩
 
-/-! ### One record of an ordinary job -/
+/-! ### One Record of an Ordinary Job -/
 
 def recO : Com := .seq (emitAt "R" "o") (.seq (emitAt "D" "o") (rawStep "LG" "o"))
 
@@ -108,7 +108,7 @@ theorem recO_spec (Sz : ℕ) :
   · simp only [List.mem_cons, List.not_mem_nil, or_false, not_or] at hy
     rw [w3 y hy.2.2.2.2, v2 y (by simp; tauto), v1 y (by simp; tauto)]
 
-/-! ### One record of a connected pair -/
+/-! ### One Record of a Connected Pair -/
 
 def recP : Com :=
   .seq (emitAt "E1" "i") (.seq (emitAt "E2" "i") (.seq (emitAt "E3" "i")
@@ -158,7 +158,7 @@ theorem recP_spec (Sz : ℕ) :
     rw [w5 y hy.2.2.2.2, v4 y (by simp; tauto), v3 y (by simp; tauto), v2 y (by simp; tauto),
       v1 y (by simp; tauto)]
 
-/-! ### A loop of records -/
+/-! ### A Loop of Records -/
 
 /-- The invariant of a printing loop over the counter `x`: the arrays and all scalars but
 the scratch ones are fixed, and the rows below the counter have been written. -/

@@ -4,7 +4,7 @@ import Lax391470Proofs.TypedPacking
 namespace Lax391470Proofs
 
 /-!
-# The auxiliary problem `AUX(p, q)`
+# The Auxiliary Problem `AUX(p, q)`
 
 Definition 2 of Elffers–de Weerdt. The paper's hardness proof does not go from SAT to
 `1|rⱼ|Lmax` directly. It goes through an intermediate problem in which some jobs carry
@@ -18,7 +18,7 @@ other." A pair `(J_{p,i}, J_{q,i})` is a disjunction — *this* long job is earl
 short job is early — between two jobs that may sit anywhere on the time line, and a
 disjunction is what a clause needs.
 
-## The shape of an instance
+## The Shape of an Instance
 
 Ordinary jobs `J` behave as in `1|rⱼ|Lmax`, with non-negative release times. On top of
 them sit two sequences of `N` pending jobs, `J_p` (all of length `p`) and `J_q` (all of

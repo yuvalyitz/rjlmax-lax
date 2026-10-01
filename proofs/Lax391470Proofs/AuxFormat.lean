@@ -137,7 +137,7 @@ theorem conforms_toksOf : Conforms EA (toksOf A) := by
       exact body_kind A j (by omega)
   · rw [EA_cons, body_length]; simp [kindAt]
 
-/-! ### From a conforming stream back to an instance -/
+/-! ### From a Conforming Stream Back to an Instance -/
 
 /-- The number at position `k`, and `0` for a bit. -/
 def numAt (ts : List Tok) (k : ℕ) : ℕ :=

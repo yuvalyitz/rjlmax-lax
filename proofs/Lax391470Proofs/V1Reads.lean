@@ -16,7 +16,7 @@ lemma toInt_self (z : ℤ) : toInt (decide (z < 0)) z.natAbs = z := by
   · simp only [h, decide_true, if_true]; omega
   · simp only [h, decide_false, Bool.false_eq_true, if_false]; omega
 
-/-! ### From an instance and a schedule to token values -/
+/-! ### From an Instance and a Schedule to Token Values -/
 
 /-- A schedule as a function on all numbers. -/
 def ext {I : Scheduling.Instance} (t : I.Schedule) (j : ℕ) : ℤ :=
@@ -72,7 +72,7 @@ theorem nz_toks2 : NZ ((toks2 I t).map Tok.val) := by
   · rintro ⟨ha, hb⟩
     by_cases hz : I.d ⟨j, hj⟩ < 0 <;> simp [hz] at ha; omega
 
-/-! ### From token values to an instance and a schedule -/
+/-! ### From Token Values to an Instance and a Schedule -/
 
 lemma conf_toks {n : ℕ} {rest : List Tok} (hc : Conforms EI (.num n :: rest)) (j : ℕ)
     (hj : j < n) :

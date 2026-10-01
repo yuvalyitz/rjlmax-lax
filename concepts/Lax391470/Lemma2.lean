@@ -5,7 +5,7 @@ import Lax429075.Satisfiability
 
 /-!
 ---
-title: The auxiliary problem is NP-complete
+title: The Auxiliary Problem Is NP-Complete
 type: theorem
 ---
 For any two integer job lengths $p > q > 1$, the problem $\mathrm{AUX}(p, q)$ is
@@ -23,7 +23,7 @@ the literals of the delayed sections to false satisfies the formula.
 
 The assumption $q > 1$ is needed: one unit of delay must not leave room for a short job.
 
-# Formalization notes
+# Formalization Notes
 
 A reduction is a function on all words. A word that does not encode a formula is sent to
 the encoding of a fixed instance without a solution: a single ordinary short job that is

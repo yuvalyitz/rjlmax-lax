@@ -42,7 +42,7 @@ abbrev Format := List Tok → Kind
 def Conforms (E : Format) (ts : List Tok) : Prop :=
   (∀ k < ts.length, (ts.getD k (.bit false)).kind = E (ts.take k)) ∧ E ts = .done
 
-/-! ### Binary digits -/
+/-! ### Binary Digits -/
 
 lemma ofBits_append (ds : List Bool) (b : Bool) :
     ofBits (ds ++ [b]) = ofBits ds + if b then 2 ^ ds.length else 0 := by

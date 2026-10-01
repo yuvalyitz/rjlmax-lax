@@ -94,7 +94,7 @@ theorem put_spec (hnk : NkSpec B Bt E cap nk Knk) (toks : List Tok) (t : Tok)
   · rw [hfi]; rfl
   · rw [hfa]; simp [h2, h1, Env.setVar, Env.setArr]
 
-/-! ### The state of the scan, reflected -/
+/-! ### The State of the Scan, Reflected -/
 
 variable (E)
 
@@ -218,7 +218,7 @@ theorem putNum_spec (hnk : NkSpec B Bt E cap nk Knk) (s : St) (hB : 2 < B)
       fun b hb => by rw [hfa b hb, qa]; rfl, by rw [hfo, qo]; rfl, by rw [hfi, qi]; rfl,
       by rw [hfl, qa]; rfl⟩
 
-/-! ### Conditionals whose outcome is known -/
+/-! ### Conditionals Whose Outcome Is Known -/
 
 theorem ite_true_spec {P : Env → Prop} {Q : Env → Env → Prop} {b : Cond} {c d : Com} {K : ℕ}
     (hb : ∀ σ, P σ → b.evalB B σ = some true) (h : Spec B P c Q K) :
@@ -238,7 +238,7 @@ lemma eval_eq_lit {σ : Env} {x : String} {n : ℕ} (hx : σ.vars x < B) (hn : n
     (Cond.eq (V x) (.lit n)).evalB B σ = some (σ.vars x == n) :=
   evalB_condEq (evalB_var hx) (evalB_lit hn)
 
-/-! ### The steps that only touch scalars -/
+/-! ### The Steps That Only Touch Scalars -/
 
 variable (E)
 
@@ -314,7 +314,7 @@ lemma cond_lit_false {σ : Env} {x : String} {n : ℕ} (hx : σ.vars x ≠ n) (h
     (hn : n < B) : (Cond.eq (V x) (.lit n)).evalB B σ = some false := by
   rw [eval_eq_lit hxB hn]; simp [hx]
 
-/-! ### One step of the scan -/
+/-! ### One Step of the Scan -/
 
 def dispatch : Com :=
   .ite (.eq (V "ph") (.lit 0))

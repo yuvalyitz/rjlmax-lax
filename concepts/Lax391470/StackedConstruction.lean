@@ -2,7 +2,7 @@ import Lax391470.AuxiliaryProblem
 
 /-!
 ---
-title: The stacked scheduling instance
+title: The Stacked Scheduling Instance
 type: definition
 ---
 The scheduling instance built from an instance of $\mathrm{AUX}(p, q)$, in which the two
@@ -28,7 +28,7 @@ short job of a pair do not fit into its bin together, so one of the two jobs run
 after $0$ is an inner job and meets an early deadline — the condition on connected
 pairs.
 
-# Formalization notes
+# Formalization Notes
 
 The source leaves the separator length $w \in \{p, q\}$ free; it is fixed to $q$ here.
 

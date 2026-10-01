@@ -5,7 +5,7 @@ import Mathlib.Data.Nat.Bits
 
 /-!
 ---
-title: Binary encodings and the two languages
+title: Binary Encodings and the Two Languages
 type: definition
 ---
 Scheduling instances and instances of the auxiliary problem as binary words, the
@@ -25,7 +25,7 @@ $\{p, q\}$* consists of the encodings of the instances on those lengths that hav
 feasible schedule, and the language $\mathrm{AUX}(p, q)$ consists of the encodings of the
 ordered instances of the auxiliary problem that have a solution at those lengths.
 
-# Formalization notes
+# Formalization Notes
 
 Numbers are written in binary, the usual convention, under which NP-hardness is the
 usual claim. Hardness under a unary encoding of the scheduling instance would be the

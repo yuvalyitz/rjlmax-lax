@@ -3,7 +3,7 @@ import Lax391470.Lemma2
 
 /-!
 ---
-title: Scheduling with two non-unit job lengths is NP-complete
+title: Scheduling with Two Non-Unit Job Lengths Is NP-Complete
 type: theorem
 ---
 Let $p > q > 1$ be two integer job lengths. Single machine scheduling with release times
@@ -21,12 +21,11 @@ itself, which would need a unary encoding of the instance, is not stated here.
 The cases left out are polynomial-time solvable: a single job length, and two job
 lengths of which the shorter is $1$.
 
-# Formalization notes
+# Formalization Notes
 
 Membership in NP holds for every pair of lengths and is stated without hypotheses. A
 certificate is a schedule with integer start times; feasibility confines every start
-time between a release time and a deadline of the instance, so its encoding is no longer
-than that of the instance.
+time between a release time and a deadline of the instance, so the certificate has size polynomial in the encoding length of the instance.
 -/
 
 namespace Lax391470.Theorem1

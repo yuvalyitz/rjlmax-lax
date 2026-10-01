@@ -76,7 +76,7 @@ lemma body_kind (k : ℕ) (hk : k < 5 * I.jobs) :
   have h5 : k % 5 = 0 ∨ k % 5 = 1 ∨ k % 5 = 2 ∨ k % 5 = 3 ∨ k % 5 = 4 := by omega
   rcases h5 with h | h | h | h | h <;> simp [h, Tok.kind]
 
-/-! ### From a conforming stream back to an instance -/
+/-! ### From a Conforming Stream Back to an Instance -/
 
 open Lax391470Proofs.AuxFormat (numAt bitAt tok_of_num tok_of_bit numAt_of bitAt_of kind_ne_done)
 

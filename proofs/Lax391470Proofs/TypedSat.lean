@@ -7,7 +7,7 @@ import Mathlib.Tactic.DeriveFintype
 namespace Lax391470Proofs
 
 /-!
-# Boolean satisfiability
+# Boolean Satisfiability
 
 CNF-SAT, the source of most NP-hardness proofs and of the reduction in
 `RjLmax.FromSat`. A formula has `n` variables and `m` clauses; a clause is a finite set

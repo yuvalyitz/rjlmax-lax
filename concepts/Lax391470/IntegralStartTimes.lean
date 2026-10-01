@@ -2,14 +2,14 @@ import Lax391470.Scheduling
 
 /-!
 ---
-title: Integral start times suffice
+title: Integral Start Times Suffice
 type: theorem
 ---
 An instance has a feasible schedule with real start times if and only if it has one with
 integer start times. Rounding every start time up to the next integer preserves
 feasibility, because release times, deadlines and processing times are integers.
 
-# Formalization notes
+# Formalization Notes
 
 The source defines a schedule as a real-valued assignment of start times and remarks
 that, by discretization, start times can always be taken to be integers. This statement

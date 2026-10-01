@@ -75,7 +75,7 @@ theorem feas_iff {I : Scheduling.Instance} {t : I.Schedule} {tk : List ℕ} (h :
       rw [← ht ⟨i, hi⟩, ← ht ⟨j, hj⟩, ← hp ⟨i, hi⟩, ← hp ⟨j, hj⟩] at this
       exact this
 
-/-! ### Reading values off tokens -/
+/-! ### Reading Values Off Tokens -/
 
 lemma val_getD (ts : List Tok) (k : ℕ) :
     (ts.map Tok.val).getD k 0 = Tok.val (ts.getD k (.bit false)) := by

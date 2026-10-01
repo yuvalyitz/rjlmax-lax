@@ -2,7 +2,7 @@ import Lax391470.Scheduling
 
 /-!
 ---
-title: The auxiliary problem AUX(p, q)
+title: The Auxiliary Problem AUX(p, Q)
 type: definition
 ---
 The intermediate problem through which the hardness proof passes. Fix two job lengths
@@ -22,7 +22,7 @@ deadline.
 A connected pair is a disjunction between two jobs that may sit anywhere on the time
 line, which is what lets the problem express the clauses of a formula.
 
-# Formalization notes
+# Formalization Notes
 
 An instance is data only; the three chains of inequalities are the separate predicate
 `Ordered`. A construction can then be written down without proof obligations, and that

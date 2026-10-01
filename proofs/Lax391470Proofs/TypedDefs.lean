@@ -10,7 +10,7 @@ import Mathlib.Tactic.Common
 namespace Lax391470Proofs
 
 /-!
-# Non-preemptive single machine scheduling with release times and deadlines
+# Non-Preemptive Single Machine Scheduling with Release Times and Deadlines
 
 The problem `1|rⱼ|Lmax` of Elffers and de Weerdt, *"Scheduling with two non-unit job
 lengths is NP-complete"*, arXiv:1412.3095v2, Definition 1.
@@ -22,7 +22,7 @@ the same time. The question is whether a feasible schedule exists — equivalent
 the maximum lateness `Lmax` can be made `≤ 0`, which is where the name of the problem
 comes from.
 
-## Time is an integer here
+## Time Is an Integer Here
 
 Definition 1 lets a schedule assign *real* start times, `t : {1,…,n} → ℝ`, while all the
 data `r`, `d`, `p` is integral. The two readings are equivalent, which the submission
@@ -33,7 +33,7 @@ interval is a `Finset`, and "these jobs fit in this window" becomes a cardinalit
 argument (`TypedPacking.lean`) rather than a measure-theoretic one. Every later file works
 over `ℤ`.
 
-## Standing convention
+## Standing Convention
 
 `p_pos` is assumed of an instance. A job of length `0` occupies no time, is schedulable
 anywhere its window is non-empty, and interacts with nothing; the paper's job lengths are

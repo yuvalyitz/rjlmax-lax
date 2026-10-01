@@ -14,7 +14,7 @@ open Lax808846Proofs.Imp Lax808846Proofs.Compile Lax808846Proofs.Reasoning
 open Lax391470Proofs.L1Check (V add)
 open Lax391470Proofs.Bits Lax434930.Certificates
 
-/-! ### The model -/
+/-! ### The Model -/
 
 set_option genInjectivity false in
 set_option genSizeOfSpec false in
@@ -122,7 +122,7 @@ lemma urun_mem_init {z : List ℕ} {v : ℕ} (h : v ∈ (urun uinit z).xs ++ (ur
   · simp [uinit] at h1
   · exact h1
 
-/-! ### The program -/
+/-! ### The Program -/
 
 variable {B : ℕ}
 

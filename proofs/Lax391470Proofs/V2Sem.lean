@@ -52,7 +52,7 @@ def EP : Prop :=
 /-- Everything the verifier checks. -/
 def Sem : Prop := OrdOK tk ∧ FE p q tk ∧ OV p q tk ∧ EP p q tk
 
-/-! ### The token values of an instance, followed by anything -/
+/-! ### The Token Values of an Instance, Followed by Anything -/
 
 section
 variable (A : AuxiliaryProblem.Instance) (rest : List ℕ)

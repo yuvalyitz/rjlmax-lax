@@ -32,7 +32,7 @@ theorem com_ok : Com.Ok layout (main p q) := by
     EmitNat.sizeLoop, EmitNat.sizeBody, EmitNat.onesLoop, EmitNat.onesBody, EmitNat.digLoop,
     EmitNat.digBody, layout, Com.Ok, Cond.Ok, condExpr, Expr.Ok]
 
-/-! ### The output is zeros and ones -/
+/-! ### The Output Is Zeros and Ones -/
 
 open Lax391470Proofs.L1Lists Lax391470Proofs.L1Model
 
@@ -74,7 +74,7 @@ lemma red_le_one {y : List ℕ} {v : ℕ} (hv : v ∈ L1Red.red p q y) : v ≤ 1
   · exact h2 _ v hv
   · exact h1 v hv
 
-/-! ### The machine program -/
+/-! ### The Machine Program -/
 
 open Lax391470Proofs.L2Ram Lax391470Proofs.L2Final
 
@@ -120,7 +120,7 @@ theorem prog_runs (w : ℕ) (x : List ℕ) (hfit : 46 + 2 * Bd p q x ≤ 2 ^ w) 
   obtain ⟨t, ht, hrun⟩ := h (x.length :: x) rfl
   exact ⟨t, by simpa using ht, by simpa [prog] using hrun⟩
 
-/-! ### Word length and running time -/
+/-! ### Word Length and Running Time -/
 
 open Lax759944.BinaryWordEncoding Lax759944.RamPolytime Lax391470Proofs.BitSize
 

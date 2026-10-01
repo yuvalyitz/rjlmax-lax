@@ -86,7 +86,7 @@ theorem prog_runs (w : ℕ) (x : List ℕ) (hfit : 65 + 5 * Bd p q x ≤ 2 ^ w) 
   obtain ⟨t, ht, hrun⟩ := h (x.length :: x) rfl
   exact ⟨t, by simpa using ht, by simpa [prog] using hrun⟩
 
-/-! ### Word length and running time -/
+/-! ### Word Length and Running Time -/
 
 open Lax759944.BinaryWordEncoding Lax759944.RamPolytime Lax391470Proofs.BitSize
 

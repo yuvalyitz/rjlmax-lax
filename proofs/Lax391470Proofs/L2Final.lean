@@ -14,7 +14,7 @@ open Lax391470Proofs.L2Main Lax391470Proofs.L2Nums Lax391470Proofs.L2Ram Lax3914
 
 variable (p q : ℕ)
 
-/-! ### The output is zeros and ones -/
+/-! ### The Output Is Zeros and Ones -/
 
 lemma bitsNat_le_one {n v : ℕ} (hv : v ∈ bitsNat n) : v ≤ 1 := by
   simp only [bitsNat, List.mem_append, List.mem_replicate, List.mem_cons, List.not_mem_nil,
@@ -41,7 +41,7 @@ lemma red_le_one {y : List ℕ} {v : ℕ} (hv : v ∈ L2Model.red p q y) : v ≤
       | exact bitsNat_le_one h
       | omega
 
-/-! ### The machine program -/
+/-! ### The Machine Program -/
 
 /-- The physical inputs: a word preceded by its length. -/
 def Shape : Set (List ℕ) := {y | y ≠ [] ∧ y.headD 0 = y.tail.length}
@@ -94,7 +94,7 @@ theorem prog_runs (w : ℕ) (x : List ℕ)
   obtain ⟨t, ht, hrun⟩ := h (x.length :: x) rfl
   exact ⟨t, by simpa using ht, by simpa [prog] using hrun⟩
 
-/-! ### Fitting into a word -/
+/-! ### Fitting Into a Word -/
 
 lemma Mx_mem_or_zero (y : List ℕ) : Mx y ∈ y ∨ Mx y = 0 := by
   induction y with
@@ -134,7 +134,7 @@ lemma fit_of (w : ℕ) (x : List ℕ)
   unfold Bd bnd
   omega
 
-/-! ### The running time is polynomial in the bit size -/
+/-! ### The Running Time Is Polynomial in the Bit Size -/
 
 open Lax759944.BinaryWordEncoding Lax759944.RamPolytime Lax391470Proofs.BitSize
 

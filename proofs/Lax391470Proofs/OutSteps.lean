@@ -213,7 +213,7 @@ theorem oEmitSel (ie : Expr) (f : ℕ → ℕ → ℕ) (Sz : ℕ) (P : List ℕ 
     simp only [SCR, List.mem_cons, List.not_mem_nil, or_false, not_or] at hy ⊢; tauto)]
   simp [Env.setVar, hix]
 
-/-! ### A loop of output steps -/
+/-! ### A Loop of Output Steps -/
 
 /-- The invariant of a loop printing rows `0, …, i - 1`. -/
 def LInv (A0 : String → List ℕ) (v0 : String → ℕ) (N : ℕ)

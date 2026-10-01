@@ -4,7 +4,7 @@ import Lax391470Proofs.TypedDefs
 namespace Lax391470Proofs
 
 /-!
-# Packing: how much fits in a window
+# Packing: How Much Fits in a Window
 
 Almost every step of the paper's proof is one counting argument. "The jobs in each
 section have length `S − 1`, each section ends with a separator job, and all job lengths

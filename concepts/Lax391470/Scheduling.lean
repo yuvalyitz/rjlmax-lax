@@ -2,7 +2,7 @@ import Mathlib.Data.Real.Basic
 
 /-!
 ---
-title: Single machine scheduling with release times and deadlines
+title: Single Machine Scheduling with Release Times and Deadlines
 type: definition
 ---
 An instance consists of $n$ jobs to be run on a single machine. Job $i$ has a release
@@ -19,7 +19,7 @@ lateness can be made non-positive.
 The problem is parameterized by the set of processing times its jobs may have. An
 instance is *on the lengths $\{p, q\}$* if every processing time is $p$ or $q$.
 
-# Formalization notes
+# Formalization Notes
 
 Jobs are `Fin n` rather than an abstract finite type: an instance is something a machine
 is handed as a word, and a word presents its jobs in an order.
