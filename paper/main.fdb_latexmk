@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790859461.66014 "main.tex" "main.pdf" "main" 1790859463.04698 0
+["pdflatex"] 1790860227.28766 "main.tex" "main.pdf" "main" 1790860228.65357 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -233,9 +233,9 @@
   "figures/pending_pair.tex" 1790859415.30758 1801 47e1f733cab9019d1ea70c36c3df511e ""
   "figures/shape.tex" 1790857006.4043 652 5306d7a21d00540daba81ed0ea11d490 ""
   "figures/stacked_construction.tex" 1790858478.42951 3005 d6a16afd2e6e714d96d8853264715b40 ""
-  "main.aux" 1790859462.83599 5540 62a38e2dbb3d9f7b26a63bac6c61ef8a "pdflatex"
-  "main.out" 1790859462.83673 1323 d43bc5a67e5d1ef35b3f76e53b14568e "pdflatex"
-  "main.tex" 1790859446.72919 20317 279d178daa8e8d47619ccf7719b90f6f ""
+  "main.aux" 1790860228.45112 5540 6eeb107af0778e52d3c05a6ba8bf46e2 "pdflatex"
+  "main.out" 1790860228.45174 1323 3de5796a20c18838aebe80d9cb3f16c1 "pdflatex"
+  "main.tex" 1790860218.05756 20313 62a5e41409ba70bfa4992ed1b08378df ""
   (generated)
   "main.aux"
   "main.log"

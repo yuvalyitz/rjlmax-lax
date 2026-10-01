@@ -37,7 +37,7 @@
 \newcommand{\NP}{\textnormal{\textsf{NP}}}
 \newcommand{\SAT}{\textsc{Sat}}
 
-\title{Scheduling with Two Non-Unit Job Lengths is NP-Complete, Formalized}
+\title{Scheduling with Two Non-Unit Job Lengths Is NP-Complete, Formalized}
 \author{Yuval Itzhaki \and Claude}
 \date{}
 
@@ -55,13 +55,13 @@ NP-complete. The reduction produces only numbers polynomial in the size of the
 input, which is why they call the problem strongly NP-complete.
 \end{abstract}
 
-\section{The problem}
+\section{The Problem}
 
 A single machine processes $n$ jobs, one at a time and without preemption.
 Job $j$ carries a release time $r_j$, a deadline $d_j$, and a processing time
 $p_j$, all non-negative integers.
 
-\begin{definition}[Scheduling with release times and deadlines]
+\begin{definition}[Scheduling with Release Times and Deadlines]
 \label{def:scheduling}
 % lax begin Lax391470.Scheduling
 An \emph{instance} is a finite set of jobs~$\big([r_j,d_j],p_j\big)$. A
@@ -111,13 +111,13 @@ $1\mid r_j\mid\sum U_j$ and $1\mid r_j\mid\sum w_jU_j$
 \Cref{thm:main}, for every $q\ge 2$, contradicts Vakhania's claimed
 pseudo-polynomial algorithm for $p_j\in\{q,2q\}$~\cite{Vakhania04}.
 
-\section{The main theorem}
+\section{The Main Theorem}
 
 Instances are read as finite binary words: a natural number is its digits
 preceded by their count in unary, and a scheduling instance is the
 concatenation of its jobs' numbers, each number's sign bit first.
 
-\begin{definition}[Instances as words]
+\begin{definition}[Instances as Words]
 \label{def:encoding}
 % lax begin Lax391470.BinaryEncoding
 \emph{Scheduling on the lengths $\{p,q\}$}, for fixed $p,q$, is the language
@@ -160,7 +160,7 @@ $\textsf{P}=\NP$, which settles Sgall's question and Mnich and van Bevern's
 Open Problem 3~\cite{Sgall12,Mnich18}.
 \end{observation}
 
-\section{The shape of the proof}
+\section{The Shape of the Proof}
 
 The reduction from satisfiability does not go directly to scheduling.
 Deciding a clause needs a disjunction between two jobs whose deadlines can be
@@ -175,7 +175,7 @@ which reduces to scheduling on $\{p,q\}$ (\Cref{lem:lemma1}).}
 \label{fig:shape}
 \end{figure}
 
-\begin{definition}[The auxiliary problem $\AUX(p,q)$]
+\begin{definition}[The Auxiliary Problem $\AUX(p,q)$]
 \label{def:aux}
 % lax begin Lax391470.AuxiliaryProblem
 An instance of $\AUX(p,q)$ consists of ordinary jobs as in
@@ -204,7 +204,7 @@ its early deadline.}
 \label{fig:pair}
 \end{figure}
 
-\section{From satisfiability to $\AUX(p,q)$}
+\section{From Satisfiability to $\AUX(p,q)$}
 
 \setcounter{lemma}{1}
 \begin{lemma}
@@ -292,7 +292,7 @@ solvable $\Rightarrow$ satisfiable.
 % lax end
 \end{proof}
 
-\begin{proposition}[The numbers stay small]
+\begin{proposition}[The Numbers Stay Small]
 \label{prop:sattimes}
 % lax begin Lax391470Proofs.SatTimes.times_le
 Every release time, deadline, and early or late deadline of the constructed
@@ -319,7 +319,7 @@ and, with membership,
 its NP-completeness.
 % lax end
 
-\section{From $\AUX(p,q)$ to scheduling}
+\section{From $\AUX(p,q)$ to Scheduling}
 
 \setcounter{lemma}{0}
 \begin{lemma}
@@ -363,7 +363,7 @@ deadline $d'_{q,1}$.}
 \label{fig:stacked}
 \end{figure}
 
-\begin{proposition}[The construction is correct]
+\begin{proposition}[The Construction Is Correct]
 % lax begin Lax391470Proofs.StackedNumbering.correct
 For job lengths $p>q\ge 1$, an ordered instance of $\AUX(p,q)$ has a solution
 exactly when the stacked instance has a feasible schedule.
@@ -376,7 +376,7 @@ The stacked instance uses only the job lengths $p$ and $q$.
 % lax end
 \end{proposition}
 
-\begin{proposition}[The numbers stay small]
+\begin{proposition}[The Numbers Stay Small]
 % lax begin Lax391470Proofs.StackedNumbering.times_le
 If every release time and deadline of an ordered instance $A$ is at most
 $T$, then every release time and deadline of the stacked instance is within
@@ -403,7 +403,7 @@ and
 the many-one reduction \Cref{lem:lemma1} states.
 % lax end
 
-\section{Integer start times}
+\section{Integer Start Times}
 
 \begin{proposition}
 % lax begin Lax391470.IntegralStartTimes
@@ -422,24 +422,24 @@ by restricting \Cref{def:scheduling} to integer schedules, as the rest of
 this paper does.
 \end{proof}
 
-\section{Putting it together}
+\section{Putting It Together}
 
 Composing \Cref{lem:lemma2} and \Cref{lem:lemma1} gives \Cref{thm:main}'s
 NP-hardness:
 \begin{itemize}
-\item[] % lax begin Lax391470Proofs.Hardness.twoLengths_npHard
+\item % lax begin Lax391470Proofs.Hardness.twoLengths_npHard
 every language in \NP{} many-one reduces to scheduling on $\{p,q\}$ through
 $\AUX(p,q)$;
 % lax end
 \end{itemize}
 and, with membership, the theorem itself:
 \begin{itemize}
-\item[] % lax begin Lax391470Proofs.Hardness.twoLengths_npComplete
+\item % lax begin Lax391470Proofs.Hardness.twoLengths_npComplete
 scheduling on the lengths $\{p,q\}$ is \NP-complete.
 % lax end
 \end{itemize}
 
-\section{Formalization notes}
+\section{Formalization Notes}
 
 Hardness rests on the archive's own proof of the Cook--Levin theorem, not on
 a literature axiom: every language in \NP{} many-one reduces to
