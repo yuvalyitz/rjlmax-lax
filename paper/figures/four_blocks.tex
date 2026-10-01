@@ -1,0 +1,102 @@
+% The four block shapes a section is built from: the selection gadgets for
+% a positive and a negative literal, and the clause gadgets for a clause
+% that does, respectively does not, contain that literal. Each gadget is
+% shown in the state where its slack is absorbed (no idle time reaches the
+% separator) except $V^-$ and $C_{\text{inact}}$, shown with their one unit
+% of idle time, together illustrating one full literal assignment and one
+% satisfied, one unsatisfied clause slot. Redrawn, with the talk's own
+% colors, from the slide "The Four Blocks" of
+% OneRjLmax/talk/rjlmax-talk.tex.
+\begin{minipage}[t]{0.5\textwidth}
+\centering
+\textbf{$V^{+}$}: literal $x_i$, no idle time
+
+\vspace{.08cm}
+\begin{tikzpicture}[x=0.5cm,y=0.78cm]
+  \draw[myblue,line width=1.1pt,|-|] (0,2.2) -- (8,2.2);
+    \node[font=\scriptsize,anchor=east,text=myblue] at (-0.3,2.2) {$B$};
+  \draw[myblue,line width=1.1pt,|-|] (1,1.4) -- (4,1.4);
+    \node[font=\scriptsize,anchor=east,text=myblue] at (-0.3,1.4) {$A$};
+  \draw[myred,line width=1.1pt,|-|] (0,0.6) -- (7,0.6);
+    \node[font=\scriptsize,anchor=east,text=myred] at (-0.3,0.6) {$P$};
+  \draw[line width=.8pt,->] (-0.3,0) -- (8.4,0);
+    \foreach \tx/\tl in {0/0,6/6,8/8} {
+      \draw[line width=1pt] (\tx,-0.1) -- (\tx,0.1);
+      \node[font=\scriptsize,anchor=north] at (\tx,-0.13) {$\tl$};}
+  \fill[myblue] (0.22,1.9) rectangle (2,2.5);
+  \fill[myblue] (2,1.1)    rectangle (3.78,1.7);
+  \fill[myred]  (4,0.3)    rectangle (6.78,0.9);
+  \draw[line width=3pt] (6,0.15) -- (6,1.05);
+\end{tikzpicture}
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth}
+\centering
+\textbf{$V^{-}$}: literal $\neg x_i$, one unit idle
+
+\vspace{.08cm}
+\begin{tikzpicture}[x=0.5cm,y=0.78cm]
+  \draw[myred,line width=1.1pt,|-|]  (0,2.2) -- (8,2.2);
+    \node[font=\scriptsize,anchor=east,text=myred] at (-0.3,2.2) {$B$};
+  \draw[myblue,line width=1.1pt,|-|] (3,1.4) -- (5,1.4);
+    \node[font=\scriptsize,anchor=east,text=myblue] at (-0.3,1.4) {$A$};
+  \draw[myblue,line width=1.1pt,|-|] (0,0.6) -- (7,0.6);
+    \node[font=\scriptsize,anchor=east,text=myblue] at (-0.3,0.6) {$P$};
+  \draw[line width=.8pt,->] (-0.3,0) -- (8.4,0);
+    \foreach \tx/\tl in {0/0,2/2,8/8} {
+      \draw[line width=1pt] (\tx,-0.1) -- (\tx,0.1);
+      \node[font=\scriptsize,anchor=north] at (\tx,-0.13) {$\tl$};}
+  \draw[mysolutioncolor,line width=1.2pt,dashed] (2,-0.25) -- (2,2.5);
+  \draw[mysolutioncolor,line width=1.2pt,dashed] (3,-0.25) -- (3,2.5);
+  \fill[myblue] (0.22,0.3) rectangle (2,0.9);
+  \fill[myblue] (3.22,1.1) rectangle (4.78,1.7);
+  \fill[myred]  (5,1.9)    rectangle (7.78,2.5);
+  \draw[line width=3pt] (2,0.15) -- (2,1.05);
+\end{tikzpicture}
+\end{minipage}
+
+\vspace{.2cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\centering
+\textbf{$C_{\text{act}}$}: clause \emph{has} the literal
+
+\vspace{.08cm}
+\begin{tikzpicture}[x=0.5cm,y=0.78cm]
+  \draw[myred,line width=1.1pt,|-|]  (0,1.4) -- (6,1.4);
+    \node[font=\scriptsize,anchor=east,text=myred] at (-0.3,1.4) {$P$};
+  \draw[myblue,line width=1.1pt,|-|] (0,0.6) -- (6,0.6);
+    \node[font=\scriptsize,anchor=east,text=myblue] at (-0.3,0.6) {$P$};
+  \draw[line width=.8pt,->] (-0.3,0) -- (6.4,0);
+    \foreach \tx/\tl in {0/0,5/5,6/6} {
+      \draw[line width=1pt] (\tx,-0.1) -- (\tx,0.1);
+      \node[font=\scriptsize,anchor=north] at (\tx,-0.13) {$\tl$};}
+  \draw[mysolutioncolor,line width=1.2pt,dashed] (0,-0.25) -- (0,1.85);
+  \draw[mysolutioncolor,line width=1.2pt,dashed] (1,-0.25) -- (1,1.85);
+  \fill[myred]  (1,1.1) rectangle (4,1.7);
+  \fill[myblue] (4,0.3) rectangle (5.78,0.9);
+  \draw[line width=3pt] (5,0.95) -- (5,1.85);
+  \draw[line width=3pt] (5,0.15) -- (5,1.05);
+\end{tikzpicture}
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth}
+\centering
+\textbf{$C_{\text{inact}}$}: clause \emph{misses} it
+
+\vspace{.08cm}
+\begin{tikzpicture}[x=0.5cm,y=0.78cm]
+  \draw[myred,line width=1.1pt,|-|]  (0,1.4) -- (6,1.4);
+    \node[font=\scriptsize,anchor=east,text=myred] at (-0.3,1.4) {$P$};
+  \draw[myblue,line width=1.1pt,|-|] (0,0.6) -- (6,0.6);
+    \node[font=\scriptsize,anchor=east,text=myblue] at (-0.3,0.6) {$P$};
+  \draw[line width=.8pt,->] (-0.3,0) -- (6.4,0);
+    \foreach \tx/\tl in {0/0,4/4,6/6} {
+      \draw[line width=1pt] (\tx,-0.1) -- (\tx,0.1);
+      \node[font=\scriptsize,anchor=north] at (\tx,-0.13) {$\tl$};}
+  \draw[mysolutioncolor,line width=1.2pt,dashed] (0,-0.25) -- (0,1.85);
+  \draw[mysolutioncolor,line width=1.2pt,dashed] (1,-0.25) -- (1,1.85);
+  \fill[myblue] (1,0.3) rectangle (3,0.9);
+  \fill[myred]  (3,1.1) rectangle (5.78,1.7);
+  \draw[line width=3pt] (4,0.95) -- (4,1.85);
+  \draw[line width=3pt] (4,0.15) -- (4,1.05);
+\end{tikzpicture}
+\end{minipage}

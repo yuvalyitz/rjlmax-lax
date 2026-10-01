@@ -1,0 +1,18 @@
+% A small scheduling instance: four jobs, their availability windows, and
+% one feasible placement. Redrawn, with the talk's own colors, from the
+% slide "Single Machine Scheduling Release Times" of
+% OneRjLmax/talk/rjlmax-talk.tex.
+\begin{tikzpicture}[x=0.62cm,y=0.62cm]
+  \draw[myred,line width=1.pt,|-|]  (0,3.6) -- (4,3.6);
+    \fill[myred] (0.22,3.3) rectangle (2,3.9);
+  \draw[myblue,line width=1.pt,|-|] (1,2.7) -- (7,2.7);
+    \fill[myblue] (4,2.4) rectangle (6.78,3.0);
+  \draw[myred,line width=1.pt,|-|]  (2,1.8) -- (6,1.8);
+    \fill[myred] (2.22,1.5) rectangle (4,2.1);
+  \draw[myblue,line width=1.pt,|-|] (4,0.9) -- (10,0.9);
+    \fill[myblue] (7,0.6) rectangle (9.78,1.2);
+  \draw[line width=1.2pt,->] (-0.4,0) -- (11,0);
+  \foreach \x in {0,...,10} \draw[line width=.9pt] (\x,-0.2) -- (\x,0.2);
+  \foreach \x in {0,5,10} \node[font=\normalsize,anchor=north] at (\x,-0.18) {\x};
+  \node[font=\small,anchor=north] at (5,-1.0) {a feasible schedule};
+\end{tikzpicture}

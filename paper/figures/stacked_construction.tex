@@ -1,0 +1,51 @@
+% The stacked construction: bin 1, pinned by its separator, holding the
+% inner short job and the inner long job; the outer short and outer long
+% jobs run after time 0, with the inner short job meeting its early
+% deadline. Redrawn, with the talk's own colors, from the slide "Lemma 1:
+% The Stacked Construction" of OneRjLmax/talk/rjlmax-talk.tex.
+\begin{tikzpicture}[x=0.40cm,y=0.78cm]
+  \def\ta{-7}
+  \def\pw{3}\def\qw{2}
+  % axis and bin 1, with its separator
+  \draw[line width=1pt,->] (-7.6,0) -- (13.5,0);
+  \draw[line width=1pt] (0,-0.16) -- (0,0.16);
+  \node[font=\small,anchor=north] at (0,-0.2) {$0$};
+  \node[font=\small,anchor=north] at (\ta,-0.2) {$t_1$};
+  \draw[mygray,line width=1pt] (\ta,0.08) -- (\ta+5,0.08);
+  \node[font=\small] at (\ta+2.5,0.35) {bin $1$};
+  \fill[mysolutioncolor] (\ta+5.25,0.2) rectangle (\ta+6.75,0.65);
+  \draw[mysolutioncolor,line width=1.4pt,|-|] (\ta+5,0.425) -- (\ta+7,0.425);
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},color=mysolutioncolor,
+        line width=1pt] (\ta,-0.05) -- (\ta+5,-0.05);
+  \node[font=\small,text=mysolutioncolor,anchor=north] at (\ta+2.5,-0.2) {$p+q$};
+  % the pair's quad: four availability windows
+  \draw[myred,line width=1.4pt,|-|]  (-5,3.6) -- (4,3.6);
+    \node[font=\small,anchor=east,text=myred]  at (-5.3,3.6) {$J^{I}_{p}$};
+  \draw[myred,line width=1.4pt,|-|]  (\ta,2.9) -- (6.5,2.9);
+    \node[font=\small,anchor=east,text=myred]  at (\ta-.3,2.9) {$J^{O}_{p}$};
+  \draw[myblue,line width=1.4pt,|-|] (-4,2.2) -- (9,2.2);
+    \node[font=\small,anchor=east,text=myblue] at (-4.3,2.2) {$J^{I}_{q}$};
+  \draw[myblue,line width=1.4pt,|-|] (\ta,1.5) -- (11.5,1.5);
+    \node[font=\small,anchor=east,text=myblue] at (\ta-.3,1.5) {$J^{O}_{q}$};
+  \draw[myred,line width=0.8pt,dashed] (4,3.6) -- (4,0);
+  \draw[line width=1pt] (4,-0.16) -- (4,0.16);
+  \node[font=\scriptsize,anchor=north,text=myred] at (4,-0.2) {$d_{J^I_p}$};
+  \draw[myred,line width=0.8pt,dashed] (6.5,2.9) -- (6.5,0);
+  \draw[line width=1pt] (6.5,-0.16) -- (6.5,0.16);
+  \node[font=\scriptsize,anchor=north,text=myred] at (6.5,-0.2) {$d_{J^O_p}$};
+  \draw[myblue,line width=0.8pt,dashed] (9,2.2) -- (9,0);
+  \draw[line width=1pt] (9,-0.16) -- (9,0.16);
+  \node[font=\scriptsize,anchor=north,text=myblue] at (9,-0.2) {$d_{J^I_q}$};
+  \draw[myblue,line width=0.8pt,dashed] (11.5,1.5) -- (11.5,0);
+  \draw[line width=1pt] (11.5,-0.16) -- (11.5,0.16);
+  \node[font=\scriptsize,anchor=north,text=myblue] at (11.5,-0.2) {$d_{J^O_q}$};
+  \draw[line width=3pt] (4,3.3) -- (4,3.9);
+  \draw[line width=3pt] (9,1.9) -- (9,2.5);
+  % the schedule: inner short + inner long parked in the bin,
+  % outer long + outer short running after time 0
+  \fill[myblue] (\ta+.22,1.2)     rectangle (\ta+\qw,1.8);
+  \fill[myred]  (\ta+\qw+.22,3.3) rectangle (\ta+\qw+\pw,3.9);
+  \fill[myred]  (0,2.6)   rectangle (\pw,3.2);
+  \fill[myblue] (\pw,1.9) rectangle (\pw+\qw,2.5);
+  \node[font=\small,anchor=west,text=mygreen] at (9.3,2.2) {meets $d'_{q,1}$};
+\end{tikzpicture}

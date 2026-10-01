@@ -1,0 +1,508 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsthm,amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+% The talk's own palette (OneRjLmax/talk/rjlmax-talk.tex), darkened for a
+% white page: long jobs red, short jobs blue, a separator or a highlighted
+% quantity amber, grid lines gray.
+\definecolor{myred}{rgb}{0.75,0,0}
+\definecolor{myblue}{rgb}{0,0,0.72}
+\definecolor{mygreen}{rgb}{0,0.5,0}
+\definecolor{mysolutioncolor}{rgb}{0.72,0.52,0}
+\definecolor{mygray}{rgb}{0.55,0.55,0.55}
+\usepackage[colorlinks,urlcolor=blue!50!black,linkcolor=blue!50!black,citecolor=green!40!black]{hyperref}
+\usepackage{cleveref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{observation}{Observation}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{construction}{Construction}
+\crefname{construction}{Construction}{Constructions}
+\Crefname{construction}{Construction}{Constructions}
+
+\newcommand{\AUX}{\textsc{Aux}}
+\newcommand{\pmax}{p_{\max}}
+\newcommand{\phash}{\#P}
+\newcommand{\LMAX}{L_{\max}}
+\newcommand{\NP}{\textnormal{\textsf{NP}}}
+\newcommand{\SAT}{\textsc{Sat}}
+
+\title{Scheduling with Two Non-Unit Job Lengths is NP-Complete, Formalized}
+\author{Yuval Itzhaki \and Claude}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This work formalizes a theorem of Elffers and de Weerdt~\cite{EdW17}:
+non-preemptive scheduling of jobs with release times and deadlines on a single
+machine, $1\mid r_j\mid\LMAX$, is polynomial-time solvable when all jobs have the
+same length, and when the jobs have two lengths of which the shorter is
+$1$~\cite{Sgall12}. Elffers and de Weerdt settle the remaining case: for every fixed pair of integer
+job lengths $p>q>1$, the problem restricted to the job lengths $\{p,q\}$ is
+NP-complete. The reduction produces only numbers polynomial in the size of the
+input, which is why they call the problem strongly NP-complete.
+\end{abstract}
+
+\section{The problem}
+
+A single machine processes $n$ jobs, one at a time and without preemption.
+Job $j$ carries a release time $r_j$, a deadline $d_j$, and a processing time
+$p_j$, all non-negative integers.
+
+\begin{definition}[Scheduling with release times and deadlines]
+\label{def:scheduling}
+% lax begin Lax391470.Scheduling
+An \emph{instance} is a finite set of jobs~$\big([r_j,d_j],p_j\big)$. A
+\emph{schedule} is a start-time assignment $t$; it is \emph{feasible} if
+every job runs inside its availability window,
+\[
+  r_j \;\le\; t(j) \;\le\; d_j - p_j \qquad\text{for every job } j,
+\]
+and the jobs' execution intervals $[t(j),\,t(j)+p_j)$ are pairwise disjoint.
+An instance is \emph{schedulable} if it admits a feasible schedule.
+% lax end
+\end{definition}
+
+\Cref{fig:instance} shows a feasible schedule of a two-job instance.
+
+\begin{figure}[h]
+\centering
+\input{figures/instance}
+\caption{Two jobs, their availability windows, and one feasible placement.}
+\label{fig:instance}
+\end{figure}
+
+A feasible schedule exists exactly when $\LMAX\le 0$ for the usual
+maximum-lateness objective, which in turn holds exactly when every job can be
+made on time, $\sum_j U_j = 0$; this is the sense in which the decision
+problem above is $1\mid r_j\mid\LMAX$.
+
+Elffers and de Weerdt organize the complexity landscape of this problem
+around the \emph{set of lengths that occur}, $P(S)=\{p_j : j\in S\}$: the
+number of distinct lengths, $\phash:=|P(S)|$, and the longest length,
+$\pmax:=\max P(S)$. The general problem is strongly NP-hard by a reduction
+from \textsc{3-Partition}, so the interesting question is how small $P(S)$
+can be made before the problem turns easy. A single length ($\phash=1$) is
+trivially polynomial; two lengths of which the shorter is $1$ is also
+polynomial, by an LP-rounding algorithm of Sgall~\cite{Sgall12}. Elffers and
+de Weerdt's remaining case, two lengths neither of them $1$, is the subject
+of this formalization.
+
+Sgall's survey of open problems in throughput scheduling poses exactly this
+question: is there a polynomial-time algorithm for $1\mid r_j,\,p_j\le
+c\mid\sum U_j$ for constant $c$, i.e.\ does $P(S)$ staying small enough keep
+the problem easy~\cite{Sgall12}? Mnich and van Bevern's survey of
+parameterized machine scheduling restates it as Open Problem 3: are
+$1\mid r_j\mid\sum U_j$ and $1\mid r_j\mid\sum w_jU_j$
+\textnormal{\textsf{W[1]}}-hard parameterized by $\pmax$, membership in even
+\textnormal{\textsf{XP}} being open~\cite{Mnich18}. Taking $p=2q$ in
+\Cref{thm:main}, for every $q\ge 2$, contradicts Vakhania's claimed
+pseudo-polynomial algorithm for $p_j\in\{q,2q\}$~\cite{Vakhania04}.
+
+\section{The main theorem}
+
+Instances are read as finite binary words: a natural number is its digits
+preceded by their count in unary, and a scheduling instance is the
+concatenation of its jobs' numbers, each number's sign bit first.
+
+\begin{definition}[Instances as words]
+\label{def:encoding}
+% lax begin Lax391470.BinaryEncoding
+\emph{Scheduling on the lengths $\{p,q\}$}, for fixed $p,q$, is the language
+of binary words encoding an instance all of whose processing times lie in
+$\{p,q\}$ and which is schedulable.
+% lax end
+\end{definition}
+
+\begin{theorem}[Elffers--de Weerdt]
+\label{thm:main}
+% lax begin Lax391470.Theorem1
+Let $p>q>1$ be two integer job lengths. Scheduling on the lengths $\{p,q\}$
+is \NP-complete.
+% lax end
+\end{theorem}
+
+The membership half of \Cref{thm:main} holds unconditionally, for every pair
+of lengths:
+
+\begin{theorem}
+% lax begin Lax391470Proofs.V1Final.twoLengths_mem_NP
+Scheduling on the lengths $\{p,q\}$ belongs to \NP, for every $p,q$.
+% lax end
+\end{theorem}
+
+A certificate is a schedule with integer start times; feasibility confines
+every start time between a release time and a deadline of the instance, so
+the certificate is no longer than the instance itself, and checking it is
+immediate. Hardness is the substance of the theorem, and the rest of this
+paper is its proof.
+
+\begin{observation}
+\label{obs:paranphard}
+Since a feasible schedule exists exactly when $\sum_j U_j=0$
+(\Cref{def:scheduling}), \Cref{thm:main} says that $1\mid r_j,\,p_j\le
+p\mid\sum U_j$ is \NP-hard already for a \emph{constant} $p$, i.e.\
+\textnormal{\textsf{para-NP}}-hard parameterized by $\pmax$. In particular
+there is no polynomial-time algorithm for any fixed bound on $\pmax$ unless
+$\textsf{P}=\NP$, which settles Sgall's question and Mnich and van Bevern's
+Open Problem 3~\cite{Sgall12,Mnich18}.
+\end{observation}
+
+\section{The shape of the proof}
+
+The reduction from satisfiability does not go directly to scheduling.
+Deciding a clause needs a disjunction between two jobs whose deadlines can be
+far apart, and plain release times and deadlines cannot say that. Elffers and
+de Weerdt introduce an intermediate problem that can.
+
+\begin{figure}[h]
+\centering
+\input{figures/shape}
+\caption{\SAT{} reduces to the auxiliary problem $\AUX(p,q)$ (\Cref{lem:lemma2}),
+which reduces to scheduling on $\{p,q\}$ (\Cref{lem:lemma1}).}
+\label{fig:shape}
+\end{figure}
+
+\begin{definition}[The auxiliary problem $\AUX(p,q)$]
+\label{def:aux}
+% lax begin Lax391470.AuxiliaryProblem
+An instance of $\AUX(p,q)$ consists of ordinary jobs as in
+\Cref{def:scheduling}, together with $N$ \emph{pending pairs}~$(J_{p,i},J_{q,i})_{i=1}^N$. Both jobs of a pair are released at $0$; $J_{p,i}$
+has length $p$ and $J_{q,i}$ has length $q$. Each pending job carries two
+deadlines, an \emph{early} one $d'$ and a \emph{late} one $d$, with
+$d'\le d$. The instance is \emph{ordered} when, for every $i$,
+\[
+  d'_{p,i}\le d_{p,i}\le d'_{p,i+1}, \qquad
+  d'_{q,i}\le d_{q,i}\le d'_{q,i+1}, \qquad
+  d_{p,i}\le d'_{q,i},
+\]
+and it has a \emph{solution} if there is a feasible schedule with respect to
+the late deadlines in which, for every $i$, at least one of $J_{p,i}$,
+$J_{q,i}$ meets its early deadline.
+% lax end
+\end{definition}
+
+\Cref{fig:pair} shows one connected pending pair.
+
+\begin{figure}[h]
+\centering
+\input{figures/pending_pair}
+\caption{A connected pending pair: at least one of the two jobs must meet
+its early deadline.}
+\label{fig:pair}
+\end{figure}
+
+\section{From satisfiability to $\AUX(p,q)$}
+
+\setcounter{lemma}{1}
+\begin{lemma}
+\label{lem:lemma2}
+% lax begin Lax391470.Lemma2
+For job lengths $p>q>1$, $\AUX(p,q)$ is \NP-complete; the reduction from
+every language in \NP{} factors through a polynomial-time many-one reduction
+from satisfiability.
+% lax end
+\end{lemma}
+
+\begin{proof}[Construction]
+% lax begin Lax391470.SatConstruction
+Fix a CNF formula $F$ with $n$ variables and $m$ clauses
+$C_0,\dots,C_{m-1}$. The time line is cut into $2n$ \emph{sections} of equal
+length $S=(p+2q)+m(p+q)+1+q$, one for every literal, in the order
+$x_0,\neg x_0,x_1,\neg x_1,\dots$ A section consists of a \emph{literal
+block} of total job length $p+2q$, then one \emph{clause block} of total job
+length $p+q$ for every clause, then one unit of idle time, then a
+\emph{separator}: an ordinary short job pinned to the last $q$ time units of
+the section.
+% lax end
+Within a literal block, the jobs are arranged so that a feasible schedule has
+exactly two shapes, differing by one unit of idle time: one shape leaves no
+idle time in the block and corresponds to the literal being \textsc{true}, the
+other leaves exactly one unit of idle time and corresponds to \textsc{false}.
+A short ordinary job of length $q\ge 2$ cannot absorb that one unit of slack
+on its own, so the idle time, once created, propagates rightwards through
+every clause block that follows in the section: a clause block lets the slack
+through unless one of its literals is set to make the clause true, in which
+case the block's pending pair is tethered so as to absorb it. A clause is
+satisfied exactly when some literal's block feeds its clause block enough
+slack to stop the propagation before it reaches the separator, which is why
+the separator's own feasibility encodes satisfiability of the whole formula.
+
+\Cref{fig:blocks} shows all four block shapes: the selection gadgets $V^+$,
+$V^-$ for a positive and a negative literal, and the clause gadgets
+$C_{\text{act}}$, $C_{\text{inact}}$ for a clause that does, respectively
+does not, contain that literal.
+
+\begin{figure}[ht]
+\centering
+\input{figures/four_blocks}
+\caption{The four block shapes. $B$, $A$, $P$ are ordinary jobs; the two
+rows marked $P$ in a clause gadget are the pending jobs of its connected
+pair, as in \Cref{fig:pair}.}
+\label{fig:blocks}
+\end{figure}
+
+Complementary literals $x_i,\neg x_i$ are kept consistent by a connected
+pending pair tethering their two literal blocks, so that one is forced
+\textsc{true} exactly when the other is forced \textsc{false}.
+\Cref{fig:gadgets} assembles four full sections, $x_1,\neg x_1,x_2,\neg
+x_2$, for the formula $(x_1\lor x_2)\land(\neg x_1\lor x_2)$, every
+tethered pair shown.
+
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/gadget_layout}}
+\caption{Four sections of the construction for $p=3$, $q=2$: two
+variables, each contributing a satisfied and an unsatisfied clause slot to
+the two clauses of $(x_1\lor x_2)\land(\neg x_1\lor x_2)$.}
+\label{fig:gadgets}
+\end{figure}
+
+Correctness is proved as two separate statements:
+\begin{itemize}
+\item % lax begin Lax391470Proofs.Reduce.lemma2_reduce_correct
+    a word belongs to \SAT{} if and only if its image under the reduction
+    belongs to $\AUX(p,q)$;
+  % lax end
+\item % lax begin Lax391470Proofs.SatNumbering.ordered
+    the constructed instance is ordered, so that \Cref{def:aux}'s hypothesis
+    is met;
+  % lax end
+\end{itemize}
+the forward and converse directions of the first statement are themselves
+separate proofs,
+% lax begin Lax391470Proofs.SatNumbering.solvable_of_satisfiable
+satisfiable $\Rightarrow$ solvable
+% lax end
+and
+% lax begin Lax391470Proofs.SatNumbering.satisfiable_of_solvable
+solvable $\Rightarrow$ satisfiable.
+% lax end
+\end{proof}
+
+\begin{proposition}[The numbers stay small]
+\label{prop:sattimes}
+% lax begin Lax391470Proofs.SatTimes.times_le
+Every release time, deadline, and early or late deadline of the constructed
+instance is at most $2nS$, the length of the time line, a polynomial in
+the size of the formula.
+% lax end
+\end{proposition}
+
+Membership of $\AUX(p,q)$ in \NP, and the polynomial running time of the
+reduction, are proved by exhibiting word-RAM programs:
+% lax begin Lax391470Proofs.V2Final.aux_mem_NP
+a verifier for $\AUX(p,q)$ running in polynomial time,
+% lax end
+and
+% lax begin Lax391470Proofs.L2Final.reduce_polyTime
+the reduction itself running in polynomial time.
+% lax end
+Composing these with Cook--Levin gives
+% lax begin Lax391470Proofs.Hardness.aux_npHard
+NP-hardness of $\AUX(p,q)$,
+% lax end
+and, with membership,
+% lax begin Lax391470Proofs.Hardness.aux_npComplete
+its NP-completeness.
+% lax end
+
+\section{From $\AUX(p,q)$ to scheduling}
+
+\setcounter{lemma}{0}
+\begin{lemma}
+\label{lem:lemma1}
+% lax begin Lax391470.Lemma1
+For job lengths $p>q\ge 1$, $\AUX(p,q)$ is polynomial-time reducible to
+scheduling on the lengths $\{p,q\}$.
+% lax end
+\end{lemma}
+
+\begin{proof}[Construction]
+% lax begin Lax391470.StackedConstruction
+Fix $w=q$ and let $t_i=-(p+q+w)\,i$ for $i=1,\dots,N$. For every pending
+pair $i$ the constructed instance contains five jobs: a \emph{separator}
+with availability interval $[t_i+p+q,\,t_i+p+q+w]$ and length $w$, which is
+thereby pinned in place; an \emph{inner} long job~$\big([t_i+q,\,d'_{p,i}],\,p\big)$
+and an \emph{outer} long job~$\big([t_i,\,d_{p,i}],\,p\big)$; an \emph{inner}
+short job~$\big([t_i+p,\,d'_{q,i}],\,q\big)$ and an \emph{outer} short
+job~$\big([t_i,\,d_{q,i}],\,q\big)$. The ordinary jobs are kept unchanged.
+% lax end
+The separators cut the time before $0$ into $N$ \emph{bins}, each with room
+for exactly one long and one short job; the four jobs of a pair are nested,
+with the inner ones carrying the early deadlines. A feasible schedule parks
+two jobs of each pair in its bin and runs the other two, one long and one
+short, after time $0$. The inner long job and the inner short job of a pair
+do not both fit into the bin together, so one of the two jobs running after
+$0$ is an inner job and meets an early deadline: exactly
+\Cref{def:aux}'s condition on connected pairs.
+
+\Cref{fig:stacked} shows bin $1$ with one proper pairing parked inside it;
+the complementary pairing then runs after time $0$ and meets its early
+deadline.
+
+\begin{figure}[ht]
+\centering
+\input{figures/stacked_construction}
+\caption{Bin $1$, pinned by its separator (amber), holding the inner short
+job $J^I_q$ and the inner long job $J^I_p$; the outer long job $J^O_p$ and
+outer short job $J^O_q$ run after time $0$, and $J^I_q$ meets its early
+deadline $d'_{q,1}$.}
+\label{fig:stacked}
+\end{figure}
+
+\begin{proposition}[The construction is correct]
+% lax begin Lax391470Proofs.StackedNumbering.correct
+For job lengths $p>q\ge 1$, an ordered instance of $\AUX(p,q)$ has a solution
+exactly when the stacked instance has a feasible schedule.
+% lax end
+\end{proposition}
+
+\begin{proposition}
+% lax begin Lax391470Proofs.StackedNumbering.lengthsIn
+The stacked instance uses only the job lengths $p$ and $q$.
+% lax end
+\end{proposition}
+
+\begin{proposition}[The numbers stay small]
+% lax begin Lax391470Proofs.StackedNumbering.times_le
+If every release time and deadline of an ordered instance $A$ is at most
+$T$, then every release time and deadline of the stacked instance is within
+$T+(p+2q)N$ of $0$, where $N$ is the number of pending pairs.
+% lax end
+\end{proposition}
+\end{proof}
+
+Together with \Cref{prop:sattimes}'s bound on $\AUX(p,q)$'s own numbers,
+this bounds every number produced by composing the two reductions by a
+polynomial in the size of the original formula, since $p$ and $q$ are fixed
+constants, the ingredient Elffers and de Weerdt's source uses to call the
+hardness \emph{strong}.
+
+As for \Cref{lem:lemma2}, three separate proofs give, respectively,
+% lax begin Lax391470Proofs.Reduce.lemma1_reduce_correct
+the reduction's correctness,
+% lax end
+% lax begin Lax391470Proofs.L1Final.reduce_polyTime
+its polynomial running time,
+% lax end
+and
+% lax begin Lax391470Proofs.Hardness.aux_manyOne_twoLengths
+the many-one reduction \Cref{lem:lemma1} states.
+% lax end
+
+\section{Integer start times}
+
+\begin{proposition}
+% lax begin Lax391470.IntegralStartTimes
+A scheduling instance is schedulable by a real-valued start-time assignment
+exactly when it is schedulable by an integer one.
+% lax end
+\end{proposition}
+\begin{proof}
+% lax begin Lax391470Proofs.IntegralStartTimes.realSchedulable_iff
+Rounding every start time up to the next integer only shortens the gap to
+each job's deadline, and keeps execution intervals disjoint because every
+release time and deadline is already an integer.
+% lax end
+This settles a remark Elffers and de Weerdt make in passing: nothing is lost
+by restricting \Cref{def:scheduling} to integer schedules, as the rest of
+this paper does.
+\end{proof}
+
+\section{Putting it together}
+
+Composing \Cref{lem:lemma2} and \Cref{lem:lemma1} gives \Cref{thm:main}'s
+NP-hardness:
+\begin{itemize}
+\item[] % lax begin Lax391470Proofs.Hardness.twoLengths_npHard
+every language in \NP{} many-one reduces to scheduling on $\{p,q\}$ through
+$\AUX(p,q)$;
+% lax end
+\end{itemize}
+and, with membership, the theorem itself:
+\begin{itemize}
+\item[] % lax begin Lax391470Proofs.Hardness.twoLengths_npComplete
+scheduling on the lengths $\{p,q\}$ is \NP-complete.
+% lax end
+\end{itemize}
+
+\section{Formalization notes}
+
+Hardness rests on the archive's own proof of the Cook--Levin theorem, not on
+a literature axiom: every language in \NP{} many-one reduces to
+satisfiability as a cited result of
+% lax begin lax-429075
+\textsc{the Cook--Levin Theorem},
+% lax end
+composed here with the two reductions above. The polynomial-time bounds of
+\Cref{lem:lemma2} and \Cref{lem:lemma1} are proved by exhibiting explicit
+programs on
+% lax begin lax-808846
+\textsc{the Word RAM}
+% lax end
+and transferring their running time to Turing-machine polynomial time via
+% lax begin lax-759944
+the proved equivalence of the two models;
+% lax end
+composing the resulting machines over possibly different alphabets uses a
+polynomial-time Turing-machine composition proved in
+% lax begin lax-434930
+\textsc{Classical Complexity Classes}.
+% lax end
+
+\section{Discussion}
+
+Single-machine scheduling with release times and deadlines is
+polynomial-time solvable when every job has the same length, and remains so
+when the lengths are drawn from $\{1,p\}$ for any $p$~\cite{Sgall12}.
+\Cref{thm:main} shows that this tractability is fragile: once both lengths
+exceed $1$, the problem is \NP-complete, for every fixed pair $p>q>1$. Since
+$p$ and $q$ are constants rather than part of the input, this rules out a
+polynomial-time algorithm at any fixed pair of lengths, settling Sgall's
+open question and Mnich and van Bevern's Open Problem 3
+(\Cref{obs:paranphard}). The dividing line between tractable and
+\NP-complete sits exactly at excluding the unit length.
+
+\begin{thebibliography}{9}
+\bibitem{EdW17}
+J.~Elffers and M.~de Weerdt.
+\newblock Scheduling with two non-unit job lengths is NP-complete.
+\newblock arXiv:1412.3095, 2017.
+\newblock \url{https://doi.org/10.48550/arXiv.1412.3095}.
+\bibitem{Cook71}
+S.~A. Cook.
+\newblock The complexity of theorem-proving procedures.
+\newblock In \emph{Proceedings of the Third Annual ACM Symposium on Theory of
+Computing}, 151--158, 1971.
+\newblock \url{https://doi.org/10.1145/800157.805047}.
+\bibitem{Sgall12}
+J.~Sgall.
+\newblock Open problems in throughput scheduling.
+\newblock In \emph{Algorithms, ESA 2012}, 2--11, 2012.
+\newblock \url{https://doi.org/10.1007/978-3-642-33090-2_2}.
+\bibitem{Vakhania04}
+N.~Vakhania.
+\newblock Single-machine scheduling with release times and tails.
+\newblock \emph{Annals of Operations Research} 129:253--271, 2004.
+\newblock \url{https://doi.org/10.1023/B:ANOR.0000030692.69147.e2}.
+\bibitem{Mnich18}
+M.~Mnich and R.~van Bevern.
+\newblock Parameterized complexity of machine scheduling: 15 open problems.
+\newblock \emph{Computers \& Operations Research} 100:254--261, 2018.
+\newblock \url{https://doi.org/10.1016/j.cor.2018.07.020}.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,118 @@
+% Four full sections of the construction: x_1, neg x_1, x_2, neg x_2, for
+% the formula (x_1 or x_2) and (neg x_1 or x_2). Every job is drawn, none
+% collapsed into a single representative bar. Dashed lines mark connected
+% pairs: between a variable's two literal blocks, and along each clause's
+% chain of clause blocks. Redrawn, with the talk's own colors, from the
+% slide "The Gadget Layout" of OneRjLmax/talk/rjlmax-talk.tex.
+\begin{tikzpicture}[x=0.135cm,y=0.68cm]
+  \node[font=\scriptsize,anchor=east,align=right] at (-2.5,6.25) {$\mathrm{Lit}[x_i]$\\$V^+$ or $V^-$};
+  \node[font=\scriptsize,anchor=east] at (-2.5,3.7) {$\mathrm{Cl}[\cdot,1]$};
+  \node[font=\scriptsize,anchor=east] at (-2.5,1.45) {$\mathrm{Cl}[\cdot,2]$};
+  \node[font=\scriptsize,anchor=east] at (-2.5,-0.3) {separator};
+  %% ---- x_1 (o=0): V+, Cl1=act, Cl2=inact ----
+  \draw[myred,line width=.8pt,|-|]  (0,6.7) -- (7,6.7);
+    \draw[line width=2.2pt] (6,6.4) -- (6,7);
+    \fill[myred] (2,6.52) rectangle (5,6.88);
+  \draw[myblue,line width=.8pt,|-|] (1,5.95) -- (4,5.95);
+    \fill[myblue] (1.35,5.77) rectangle (3,6.13);
+  \draw[myblue,line width=.8pt,|-|] (0,5.2) -- (8,5.2);
+    \fill[myblue] (5,5.02) rectangle (7,5.38);
+  \draw[myred,line width=.8pt,|-|]  (0,3.7) -- (13,3.7);
+    \draw[line width=2.2pt] (12,3.4) -- (12,4);
+    \fill[myred] (7,3.52) rectangle (10,3.88);
+  \draw[myblue,line width=.8pt,|-|] (0,2.95) -- (13,2.95);
+    \fill[myblue] (10,2.77) rectangle (12,3.13);
+  \draw[myred,line width=.8pt,|-|]  (0,1.45) -- (18,1.45);
+    \draw[line width=2.2pt] (16,1.15) -- (16,1.75);
+    \fill[myred] (12,1.27) rectangle (15,1.63);
+  \draw[myblue,line width=.8pt,|-|] (0,0.7) -- (18,0.7);
+    \fill[myblue] (15,0.52) rectangle (17,0.88);
+  \draw[mysolutioncolor,line width=1.1pt,|-|] (18,-0.3) -- (20,-0.3);
+    \fill[mysolutioncolor] (18.4,-0.48) rectangle (19.6,-0.12);
+  \node[font=\small,anchor=south] at (10,7.15) {$x_1$};
+  %% ---- neg x_1 (o=20): V-, Cl1=inact, Cl2=act ----
+  \draw[myred,line width=.8pt,|-|]  (20,6.7) -- (28,6.7);
+    \fill[myred] (25,6.52) rectangle (27.85,6.88);
+  \draw[myblue,line width=.8pt,|-|] (0,5.95) -- (26.65,5.95);
+    \draw[line width=2.2pt] (22,5.65) -- (22,6.25);
+    \fill[myblue] (20,5.77) rectangle (21.65,6.13);
+  \draw[myblue,line width=.8pt,|-|] (23,5.2) -- (25,5.2);
+    \fill[myblue] (23.25,5.02) rectangle (24.75,5.38);
+  \draw[myred,line width=.8pt,|-|]  (0,3.7) -- (33,3.7);
+    \draw[line width=2.2pt] (31,3.4) -- (31,4);
+    \fill[myred] (28,3.52) rectangle (30.65,3.88);
+  \draw[myblue,line width=.8pt,|-|] (0,2.95) -- (33,2.95);
+    \fill[myblue] (31,2.77) rectangle (32.85,3.13);
+  \draw[myred,line width=.8pt,|-|]  (0,1.45) -- (38,1.45);
+    \draw[line width=2.2pt] (37,1.15) -- (37,1.75);
+    \fill[myred] (32,1.27) rectangle (35,1.63);
+  \draw[myblue,line width=.8pt,|-|] (0,0.7) -- (38,0.7);
+    \fill[myblue] (35,0.52) rectangle (37,0.88);
+  \draw[mysolutioncolor,line width=1.1pt,|-|] (38,-0.3) -- (40,-0.3);
+    \fill[mysolutioncolor] (38.4,-0.48) rectangle (39.6,-0.12);
+  \node[font=\small,anchor=south] at (30,7.15) {$\neg x_1$};
+  %% ---- x_2 (o=40): V+, Cl1=act, Cl2=act ----
+  \draw[myred,line width=.8pt,|-|]  (40,6.7) -- (47,6.7);
+    \draw[line width=2.2pt] (46,6.4) -- (46,7);
+    \fill[myred] (42,6.52) rectangle (45,6.88);
+  \draw[myblue,line width=.8pt,|-|] (41,5.95) -- (44,5.95);
+    \fill[myblue] (41.15,5.77) rectangle (43,6.13);
+  \draw[myblue,line width=.8pt,|-|] (40,5.2) -- (48,5.2);
+    \fill[myblue] (46,5.02) rectangle (47.85,5.38);
+  \draw[myred,line width=.8pt,|-|]  (0,3.7) -- (53,3.7);
+    \draw[line width=2.2pt] (52,3.4) -- (52,4);
+    \fill[myred] (47,3.52) rectangle (50,3.88);
+  \draw[myblue,line width=.8pt,|-|] (0,2.95) -- (53,2.95);
+    \fill[myblue] (50,2.77) rectangle (52,3.13);
+  \draw[myred,line width=.8pt,|-|]  (0,1.45) -- (58,1.45);
+    \draw[line width=2.2pt] (57,1.15) -- (57,1.75);
+    \fill[myred] (52,1.27) rectangle (55,1.63);
+  \draw[myblue,line width=.8pt,|-|] (0,0.7) -- (58,0.7);
+    \fill[myblue] (55,0.52) rectangle (57,0.88);
+  \draw[mysolutioncolor,line width=1.1pt,|-|] (58,-0.3) -- (60,-0.3);
+    \fill[mysolutioncolor] (58.4,-0.48) rectangle (59.6,-0.12);
+  \node[font=\small,anchor=south] at (50,7.15) {$x_2$};
+  %% ---- neg x_2 (o=60): V-, Cl1=inact, Cl2=inact ----
+  \draw[myred,line width=.8pt,|-|]  (60,6.7) -- (68,6.7);
+    \fill[myred] (65,6.52) rectangle (67.85,6.88);
+  \draw[myblue,line width=.8pt,|-|] (0,5.95) -- (67,5.95);
+    \draw[line width=2.2pt] (62,5.65) -- (62,6.25);
+    \fill[myblue] (60,5.77) rectangle (61.65,6.13);
+  \draw[myblue,line width=.8pt,|-|] (63,5.2) -- (65,5.2);
+    \fill[myblue] (63.15,5.02) rectangle (64.85,5.38);
+  \draw[myred,line width=.8pt,|-|]  (0,3.7) -- (73,3.7);
+    \draw[line width=2.2pt] (71,3.4) -- (71,4);
+    \fill[myred] (68,3.52) rectangle (70.65,3.88);
+  \draw[myblue,line width=.8pt,|-|] (0,2.95) -- (73,2.95);
+    \fill[myblue] (71,2.77) rectangle (72.85,3.13);
+  \draw[myred,line width=.8pt,|-|]  (0,1.45) -- (78,1.45);
+    \draw[line width=2.2pt] (76,1.15) -- (76,1.75);
+    \fill[myred] (72,1.27) rectangle (75,1.63);
+  \draw[myblue,line width=.8pt,|-|] (0,0.7) -- (78,0.7);
+    \fill[myblue] (75,0.52) rectangle (77,0.88);
+  \draw[mysolutioncolor,line width=1.1pt,|-|] (78,-0.3) -- (80,-0.3);
+    \fill[mysolutioncolor] (78.4,-0.48) rectangle (79.6,-0.12);
+  \node[font=\small,anchor=south] at (70,7.15) {$\neg x_2$};
+  %% ---- axis, with a tick at every section boundary ----
+  \draw[mygray,line width=.5pt,opacity=.6] (0,-0.9)  -- (0,7.0);
+  \draw[mygray,line width=.5pt,opacity=.6] (20,-0.9) -- (20,7.0);
+  \draw[mygray,line width=.5pt,opacity=.6] (40,-0.9) -- (40,7.0);
+  \draw[mygray,line width=.5pt,opacity=.6] (60,-0.9) -- (60,7.0);
+  \draw[mygray,line width=.5pt,opacity=.6] (80,-0.9) -- (80,7.0);
+  \draw[line width=1pt,->] (-0.3,-1.0) -- (81,-1.0);
+    \draw[line width=1pt] (0,-1.1)  -- (0,-0.9);
+    \draw[line width=1pt] (80,-1.1) -- (80,-0.9);
+    \node[font=\small,anchor=north] at (0,-1.15)  {$0$};
+    \node[font=\small,anchor=north] at (80,-1.15) {$4S$};
+  % literal pairs: a variable's two literal blocks are connected
+  \draw[mysolutioncolor,line width=1pt,dashed] (4.5,6.7) .. controls (12,6.95) and (14,6.95) .. (21,5.95);
+  \draw[mysolutioncolor,line width=1pt,dashed] (44.5,6.7) .. controls (52,6.95) and (54,6.95) .. (61,5.95);
+  % clause 1's chain
+  \draw[mysolutioncolor,line width=1pt,dashed] (8.5,3.7) -- (32,2.95);
+  \draw[mysolutioncolor,line width=1pt,dashed] (29.5,3.7) -- (51,2.95);
+  \draw[mysolutioncolor,line width=1pt,dashed] (48.5,3.7) -- (72,2.95);
+  % clause 2's chain
+  \draw[mysolutioncolor,line width=1pt,dashed] (14.5,1.45) -- (36,0.7);
+  \draw[mysolutioncolor,line width=1pt,dashed] (33.5,1.45) -- (56,0.7);
+  \draw[mysolutioncolor,line width=1pt,dashed] (53.5,1.45) -- (76,0.7);
+\end{tikzpicture}

@@ -1,0 +1,13 @@
+% The shape of the proof: two reductions composed. Redrawn plainly from the
+% slide "The Shape of the Proof" of OneRjLmax/talk/rjlmax-talk.tex.
+\begin{tikzpicture}[x=1cm,y=1cm,
+  box/.style={draw,line width=1pt,rounded corners=3pt,inner sep=7pt,
+              minimum width=3.6cm,align=center}]
+  \node[box] (sat) at (0,3)   {CNF-SAT};
+  \node[box] (aux) at (0,1.2) {$\AUX(p,q)$};
+  \node[box] (sch) at (0,-0.6) {$1|r_j|\LMAX$ on $\{p,q\}$};
+  \draw[->,line width=1.2pt] (sat) -- (aux)
+    node[midway,right=.15cm,font=\small] {Lemma 2};
+  \draw[->,line width=1.2pt] (aux) -- (sch)
+    node[midway,right=.15cm,font=\small] {Lemma 1};
+\end{tikzpicture}

@@ -103,6 +103,9 @@ bibEntries:
     \  url          = {https://laxarchive.org/lax-759944/}
 
     }\n"
+paper:
+  folder: paper
+  main: main.tex
 issue:
   repositoryId: 1320232165
   number: 136
